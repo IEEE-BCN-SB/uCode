@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -73,8 +74,17 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         // TBD Only Test purpose, to be deleted
-        TextView textView = view.findViewById(R.id.tv_home);
-        textView.setText(mName);
+        TextView textViewHomeName = view.findViewById(R.id.fragment_home_name);
+        TextView textViewHomeDescription = view.findViewById(R.id.fragment_home_description);
+        ImageView[] fragmentHomeImages = {
+                view.findViewById(R.id.fragment_home_image_1),
+                view.findViewById(R.id.fragment_home_image_2),
+                view.findViewById(R.id.fragment_home_image_3) };
+
+        textViewHomeName.setText(mName);
+        textViewHomeDescription.setText(mName);
+        /*for(int i = 0; i < fragmentHomeImages.length ; ++i)
+            fragmentHomeImages[i].setImageURI(Uri.parse("http://i0.kym-cdn.com/entries/icons/original/000/013/564/doge.jpg"));*/
 
         return view;
     }

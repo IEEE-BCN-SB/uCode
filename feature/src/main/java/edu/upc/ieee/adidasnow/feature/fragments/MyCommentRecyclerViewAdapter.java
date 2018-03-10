@@ -30,7 +30,7 @@ public class MyCommentRecyclerViewAdapter extends RecyclerView.Adapter<MyComment
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_comment, parent, false);
+                .inflate(R.layout.product_list_row, parent, false);
         return new ViewHolder(view);
     }
 

@@ -14,8 +14,6 @@ import edu.upc.ieee.adidasnow.feature.R;
 import edu.upc.ieee.adidasnow.feature.fragments.dummy.DummyContent;
 import edu.upc.ieee.adidasnow.feature.fragments.dummy.DummyContent.DummyItem;
 
-import java.util.List;
-
 /**
  * A fragment representing a list of Items.
  * <p/>
@@ -59,7 +57,7 @@ public class InterestedFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_interested_list, container, false);
+        View view = inflater.inflate(R.layout.product_list, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {

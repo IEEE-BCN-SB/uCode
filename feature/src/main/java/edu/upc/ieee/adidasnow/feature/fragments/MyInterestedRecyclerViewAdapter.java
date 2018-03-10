@@ -30,7 +30,7 @@ public class MyInterestedRecyclerViewAdapter extends RecyclerView.Adapter<MyInte
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_interested, parent, false);
+                .inflate(R.layout.product_list_row, parent, false);
         return new ViewHolder(view);
     }
 

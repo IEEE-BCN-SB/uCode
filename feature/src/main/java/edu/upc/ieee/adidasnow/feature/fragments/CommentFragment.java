@@ -10,9 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+import java.util.Vector;
+
 import edu.upc.ieee.adidasnow.feature.R;
-import edu.upc.ieee.adidasnow.feature.fragments.dummy.DummyContent;
 import edu.upc.ieee.adidasnow.feature.fragments.dummy.DummyContent.DummyItem;
+import edu.upc.ieee.adidasnow.feature.models.AssignProduct;
+import edu.upc.ieee.adidasnow.feature.models.Product;
 
 /**
  * A fragment representing a list of Items.
@@ -57,7 +61,7 @@ public class CommentFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_comment_list, container, false);
+        View view = inflater.inflate(R.layout.comment_list, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -68,7 +72,17 @@ public class CommentFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyCommentRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            //recyclerView.setAdapter(new MyCommentRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+
+
+            List<Product> l = new Vector<Product>();
+            Product p = new Product();
+            p.setName("Heil");
+            p.setCategory("Roba");
+            p.setDescription("Mein fuhrer");
+            p.setPrice(20.0);
+            l.add(p);
+            recyclerView.setAdapter(new AssignProduct(l));
         }
         return view;
     }

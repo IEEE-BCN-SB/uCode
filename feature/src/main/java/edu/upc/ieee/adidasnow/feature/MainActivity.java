@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ShareCompat;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v7.app.AppCompatActivity;
@@ -18,13 +19,24 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import edu.upc.ieee.adidasnow.feature.fragments.HomeFragment;
 import edu.upc.ieee.adidasnow.feature.fragments.CommentFragment;
 import edu.upc.ieee.adidasnow.feature.fragments.InterestedFragment;
+import edu.upc.ieee.adidasnow.feature.models.AssignProduct;
 import edu.upc.ieee.adidasnow.feature.models.Product;
 import edu.upc.ieee.adidasnow.feature.remote.GenericController;
 
 public class MainActivity extends AppCompatActivity {
+
+
+    private List<Product> productList = new ArrayList<>();
+    private RecyclerView recyclerView;
+    private AssignProduct assignProduct;
+
+
 
     private static final String ADIDAS_EXAMPLE_URL = "https://www.adidas.es/zapatilla-nmd_r1-stlt-primeknit/CQ2029.html";
     ProgressBar mProgressBar;
@@ -37,17 +49,15 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-            if (mProduct == null) {
-                mTextView.setVisibility(View.VISIBLE);
-                return false;
-            } else {
-                mTextView.setVisibility(View.INVISIBLE);
-            }
-
             int id = item.getItemId();
             if (id == R.id.navigation_home) {
+                if (mProduct == null) {
+                    mTextView.setVisibility(View.VISIBLE);
+                    return false;
+                } else {
+                    mTextView.setVisibility(View.INVISIBLE);
+                }
                 replaceFragment(HomeFragment.newInstance(mProduct.getName(), mProduct.getDescription()));
-                getString(R.string.title_nav_home);
                 return true;
             } else if (id == R.id.navigation_comments) {
                 replaceFragment(new CommentFragment());
