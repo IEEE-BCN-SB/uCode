@@ -2,6 +2,7 @@ package edu.upc.ieee.adidasnow.feature;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -12,21 +13,41 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import java.io.IOException;
+
+import edu.upc.ieee.Product;
 import edu.upc.ieee.adidasnow.feature.fragments.HomeFragment;
 import edu.upc.ieee.adidasnow.feature.fragments.CommentFragment;
 import edu.upc.ieee.adidasnow.feature.fragments.InterestedFragment;
+import edu.upc.ieee.adidasnow.feature.remote.GenericController;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String ADIDAS_EXAMPLE_URL = "https://www.adidas.es/zapatilla-nmd_r1-stlt-primeknit/CQ2029.html";
+    ProgressBar mProgressBar;
+    Product mProduct;
+    TextView mTextView;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+            if (mProduct == null) {
+                mTextView.setVisibility(View.VISIBLE);
+                return false;
+            } else {
+                mTextView.setVisibility(View.INVISIBLE);
+            }
+
             int id = item.getItemId();
             if (id == R.id.navigation_home) {
-                replaceFragment(HomeFragment.newInstance(getString(R.string.title_nav_home)));
+                replaceFragment(HomeFragment.newInstance(mProduct.getName(), mProduct.getDescription()));
                 getString(R.string.title_nav_home);
                 return true;
             } else if (id == R.id.navigation_comments) {
@@ -48,7 +69,14 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        replaceFragment(HomeFragment.newInstance(getString(R.string.title_nav_home)));
+        // TODO Async task to get product object.
+        // In pre execute progress bar
+        // in post execute, replace fragment and pass product object that is global declared.
+        mProgressBar = findViewById(R.id.progressBar);
+        mTextView = findViewById(R.id.tv_noinfo);
+        new DownloadProduct().execute(ADIDAS_EXAMPLE_URL);
+
+
     }
 
     @Override
@@ -98,4 +126,34 @@ public class MainActivity extends AppCompatActivity {
                 .startChooser();
     }
 
+
+    public class DownloadProduct extends AsyncTask<String, Void, Product> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            mProgressBar.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected Product doInBackground(String... params) {
+            String url = params[0];
+            return new GenericController().getProduct(url);
+
+        }
+
+        @Override
+        protected void onPostExecute(Product product) {
+            mProgressBar.setVisibility(View.INVISIBLE);
+            mProduct = null;
+            if (product == null) {
+                mTextView.setVisibility(View.VISIBLE);
+            } else {
+                mTextView.setVisibility(View.INVISIBLE);
+                mProduct = product;
+                replaceFragment(HomeFragment.newInstance(product.getName(), product.getDescription()));
+            }
+
+        }
+    }
 }
