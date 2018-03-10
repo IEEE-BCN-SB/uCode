@@ -1,10 +1,8 @@
-package edu.upc.ieee;
+package edu.upc.ieee.adidasnow.feature.models;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
-import edu.upc.ieee.adidasnow.feature.models.Comment;
 
 public class Product {
 
