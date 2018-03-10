@@ -1,4 +1,4 @@
-package edu.upc.ieee.adidasnow.model;
+package edu.upc.ieee.adidasnow.feature.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -50,4 +50,13 @@ public class Product {
         this.description = description;
     }
 
+    @Override
+    public String toString() {
+        return "Product{" +
+                "price=" + price +
+                ", name='" + name + '\'' +
+                ", category='" + category + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }
