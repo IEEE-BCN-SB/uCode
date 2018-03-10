@@ -22,13 +22,13 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             int id = item.getItemId();
             if (id == R.id.navigation_home) {
-                replaceFragment(BlankFragment.newInstance(getString(R.string.title_home)));
-                getString(R.string.title_home);
+                replaceFragment(BlankFragment.newInstance(getString(R.string.title_nav_home)));
+                getString(R.string.title_nav_home);
                 return true;
-            } else if (id == R.id.navigation_dashboard) {
+            } else if (id == R.id.navigation_comments) {
                 replaceFragment(new CommentFragment());
                 return true;
-            } else if (id == R.id.navigation_notifications) {
+            } else if (id == R.id.navigation_interested) {
                 replaceFragment(new InterestedFragment());
                 return true;
             }
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        replaceFragment(BlankFragment.newInstance(getString(R.string.title_home)));
+        replaceFragment(BlankFragment.newInstance(getString(R.string.title_nav_home)));
     }
 
     void replaceFragment(Fragment fragment) {
