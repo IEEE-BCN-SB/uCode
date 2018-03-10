@@ -3,7 +3,7 @@ package edu.upc.ieee.adidasnow.feature.remote;
 import edu.upc.ieee.Product;
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * Created by alejandro on 11/11/17.
@@ -16,8 +16,8 @@ public interface SOServices {
 
 
 
-        @GET("product?uri={uri}")
-        Call<Product> getProduct(@Path("uri") String uri);
+        @GET("product")
+        Call<Product> getProduct(@Query(value="uri", encoded=true) String uri);
 
 
 }
