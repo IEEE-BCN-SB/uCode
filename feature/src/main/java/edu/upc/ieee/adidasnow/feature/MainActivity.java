@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import edu.upc.ieee.adidasnow.feature.fragments.BlankFragment;
+import edu.upc.ieee.adidasnow.feature.fragments.CommentFragment;
+import edu.upc.ieee.adidasnow.feature.fragments.InterestedFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,10 +26,10 @@ public class MainActivity extends AppCompatActivity {
                 getString(R.string.title_home);
                 return true;
             } else if (id == R.id.navigation_dashboard) {
-                replaceFragment(BlankFragment.newInstance(getString(R.string.title_dashboard)));
+                replaceFragment(new CommentFragment());
                 return true;
             } else if (id == R.id.navigation_notifications) {
-                replaceFragment(BlankFragment.newInstance(getString(R.string.title_notifications)));
+                replaceFragment(new InterestedFragment());
                 return true;
             }
             return false;
