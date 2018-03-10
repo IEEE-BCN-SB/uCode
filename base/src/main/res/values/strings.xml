@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">AdidasNow</string>
+    <string-array name="categories">
+        <item>Pantalón Mujer</item>
+        <item>Pantalón Hombre</item>
+        <item>Camiseta Mujer</item>
+        <item>Camiseta Hombre</item>
+    </string-array>
 </resources>
