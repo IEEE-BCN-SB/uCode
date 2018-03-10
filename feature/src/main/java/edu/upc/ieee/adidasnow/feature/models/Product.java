@@ -41,39 +41,6 @@ public void setName(String name) {
 this.name = name;
 }
 
-public String getCategory() {
-return category;
-}
-
-public void setCategory(String category) {
-this.category = category;
-}
-
-public String getDescription() {
-return description;
-}
-
-public void setDescription(String description) {
-this.description = description;
-}
-
-public List<Comment> getComments() {
-return comments;
-}
-
-public void setComments(List<Comment> comments) {
-this.comments = comments;
-}
-
-public List<String> getImages() {
-return images;
-}
-
-public void setImages(List<String> images) {
-this.images = images;
-}
-
-}
     public String getCategory() {
         return category;
     }

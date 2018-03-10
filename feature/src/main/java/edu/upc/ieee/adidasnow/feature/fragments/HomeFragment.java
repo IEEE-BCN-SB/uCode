@@ -13,7 +13,6 @@ import com.google.gson.Gson;
 
 import org.w3c.dom.Text;
 
-import edu.upc.ieee.Product;
 import edu.upc.ieee.adidasnow.feature.R;
 
 /**
