@@ -39,8 +39,7 @@
                     android:layout_gravity="bottom|right"
                     android:adjustViewBounds="false"
                     android:cropToPadding="false"
-                    android:src="@android:drawable/ic_delete"
-                    a/>
+                    android:src="@android:drawable/ic_delete" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

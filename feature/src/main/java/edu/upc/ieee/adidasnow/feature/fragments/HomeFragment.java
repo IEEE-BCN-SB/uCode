@@ -62,8 +62,6 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        TextView textView = view.findViewById(R.id.tv_blank_fragment);
-        textView.setText(mParam1);
         return view;
     }
 
