@@ -1,6 +1,7 @@
 package edu.upc.ieee.adidasnow.feature.remote;
 
-import edu.upc.ieee.Product;
+
+import edu.upc.ieee.adidasnow.feature.models.Product;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;

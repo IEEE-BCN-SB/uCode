@@ -17,12 +17,11 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import java.io.IOException;
 
-import edu.upc.ieee.Product;
 import edu.upc.ieee.adidasnow.feature.fragments.HomeFragment;
 import edu.upc.ieee.adidasnow.feature.fragments.CommentFragment;
 import edu.upc.ieee.adidasnow.feature.fragments.InterestedFragment;
+import edu.upc.ieee.adidasnow.feature.models.Product;
 import edu.upc.ieee.adidasnow.feature.remote.GenericController;
 
 public class MainActivity extends AppCompatActivity {

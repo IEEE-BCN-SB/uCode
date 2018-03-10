@@ -1,6 +1,7 @@
 package edu.upc.ieee.adidasnow.feature.remote;
 
-import edu.upc.ieee.Product;
+
+import edu.upc.ieee.adidasnow.feature.models.Product;
 import retrofit2.Response;
 
 /**
@@ -9,14 +10,8 @@ import retrofit2.Response;
 
 import android.content.res.Resources;
 import android.net.Uri;
-import android.util.Log;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
 
 
 public class GenericController {
