@@ -14,12 +14,12 @@ import edu.upc.ieee.adidasnow.feature.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link BlankFragment.OnFragmentInteractionListener} interface
+ * {@link HomeFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link BlankFragment#newInstance} factory method to
+ * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BlankFragment extends Fragment {
+public class HomeFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,7 +29,7 @@ public class BlankFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public BlankFragment() {
+    public HomeFragment() {
         // Required empty public constructor
     }
 
@@ -38,11 +38,11 @@ public class BlankFragment extends Fragment {
      * this fragment using the provided parameters.
      *
      * @param param1 Parameter 1.
-     * @return A new instance of fragment BlankFragment.
+     * @return A new instance of fragment HomeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static BlankFragment newInstance(String param1) {
-        BlankFragment fragment = new BlankFragment();
+    public static HomeFragment newInstance(String param1) {
+        HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         fragment.setArguments(args);
@@ -61,7 +61,7 @@ public class BlankFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_blank, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
         TextView textView = view.findViewById(R.id.tv_blank_fragment);
         textView.setText(mParam1);
         return view;

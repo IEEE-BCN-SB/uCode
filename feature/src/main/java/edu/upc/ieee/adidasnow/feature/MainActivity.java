@@ -1,6 +1,5 @@
 package edu.upc.ieee.adidasnow.feature;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -14,7 +13,7 @@ import android.view.MenuItem;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import edu.upc.ieee.adidasnow.feature.fragments.BlankFragment;
+import edu.upc.ieee.adidasnow.feature.fragments.HomeFragment;
 import edu.upc.ieee.adidasnow.feature.fragments.CommentFragment;
 import edu.upc.ieee.adidasnow.feature.fragments.InterestedFragment;
 
@@ -27,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             int id = item.getItemId();
             if (id == R.id.navigation_home) {
-                replaceFragment(BlankFragment.newInstance(getString(R.string.title_nav_home)));
+                replaceFragment(HomeFragment.newInstance(getString(R.string.title_nav_home)));
                 getString(R.string.title_nav_home);
                 return true;
             } else if (id == R.id.navigation_comments) {
@@ -49,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        replaceFragment(BlankFragment.newInstance(getString(R.string.title_nav_home)));
+        replaceFragment(HomeFragment.newInstance(getString(R.string.title_nav_home)));
     }
 
     @Override
