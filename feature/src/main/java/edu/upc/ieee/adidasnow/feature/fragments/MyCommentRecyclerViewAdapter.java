@@ -4,11 +4,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import edu.upc.ieee.adidasnow.feature.R;
 import edu.upc.ieee.adidasnow.feature.fragments.CommentFragment.OnListFragmentInteractionListener;
 import edu.upc.ieee.adidasnow.feature.fragments.dummy.DummyContent.DummyItem;
+import edu.upc.ieee.adidasnow.feature.models.Product;
 
 import java.util.List;
 
@@ -22,6 +26,8 @@ public class MyCommentRecyclerViewAdapter extends RecyclerView.Adapter<MyComment
     private final List<DummyItem> mValues;
     private final OnListFragmentInteractionListener mListener;
 
+    // private List<Product> productList;
+
     MyCommentRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
@@ -30,15 +36,16 @@ public class MyCommentRecyclerViewAdapter extends RecyclerView.Adapter<MyComment
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.product_list_row, parent, false);
+                .inflate(R.layout.comment_list_row, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mTitleView.setText(mValues.get(position).id);
+        holder.mDescriptionView.setText(mValues.get(position).content);
+        holder.mNameView.setText(mValues.get(position).id);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,20 +66,19 @@ public class MyCommentRecyclerViewAdapter extends RecyclerView.Adapter<MyComment
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         final View mView;
-        final TextView mIdView;
-        final TextView mContentView;
+        final TextView mTitleView;
+        final TextView mDescriptionView;
+        final TextView mNameView;
+
         DummyItem mItem;
 
         ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = view.findViewById(R.id.id);
-            mContentView = view.findViewById(R.id.content);
+            mTitleView = view.findViewById(R.id.comment_row_title);
+            mDescriptionView = view.findViewById(R.id.comment_row_product);
+            mNameView = view.findViewById(R.id.comment_row_name);
         }
 
-        @Override
-        public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
-        }
     }
 }

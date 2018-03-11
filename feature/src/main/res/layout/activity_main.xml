@@ -6,13 +6,6 @@
     android:layout_height="match_parent"
     tools:context="edu.upc.ieee.adidasnow.feature.MainActivity">
 
-    <TextView
-        android:id="@+id/tv_noinfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="No Info"
-        android:visibility="invisible"/>
-
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"

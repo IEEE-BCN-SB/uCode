@@ -14,8 +14,8 @@ import java.util.List;
 import java.util.Vector;
 
 import edu.upc.ieee.adidasnow.feature.R;
+import edu.upc.ieee.adidasnow.feature.fragments.dummy.DummyContent;
 import edu.upc.ieee.adidasnow.feature.fragments.dummy.DummyContent.DummyItem;
-import edu.upc.ieee.adidasnow.feature.models.AssignProduct;
 import edu.upc.ieee.adidasnow.feature.models.Product;
 
 /**
@@ -72,9 +72,10 @@ public class CommentFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            //recyclerView.setAdapter(new MyCommentRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new MyCommentRecyclerViewAdapter(DummyContent.ITEMS, mListener));
 
 
+            /*
             List<Product> l = new Vector<Product>();
             Product p = new Product();
             p.setName("Heil");
@@ -83,6 +84,7 @@ public class CommentFragment extends Fragment {
             p.setPrice(20.0);
             l.add(p);
             recyclerView.setAdapter(new AssignProduct(l));
+            */
         }
         return view;
     }

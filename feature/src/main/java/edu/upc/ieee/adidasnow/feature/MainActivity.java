@@ -9,39 +9,24 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ShareCompat;
-import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.TextView;
-
-
-import java.util.ArrayList;
-import java.util.List;
 
 import edu.upc.ieee.adidasnow.feature.fragments.HomeFragment;
 import edu.upc.ieee.adidasnow.feature.fragments.CommentFragment;
 import edu.upc.ieee.adidasnow.feature.fragments.InterestedFragment;
-import edu.upc.ieee.adidasnow.feature.models.AssignProduct;
 import edu.upc.ieee.adidasnow.feature.models.Product;
 import edu.upc.ieee.adidasnow.feature.remote.GenericController;
 
 public class MainActivity extends AppCompatActivity {
 
-
-    private List<Product> productList = new ArrayList<>();
-    private RecyclerView recyclerView;
-    private AssignProduct assignProduct;
-
-
-
     private static final String ADIDAS_EXAMPLE_URL = "https://www.adidas.es/zapatilla-nmd_r1-stlt-primeknit/CQ2029.html";
     ProgressBar mProgressBar;
     Product mProduct;
-    TextView mTextView;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -52,12 +37,11 @@ public class MainActivity extends AppCompatActivity {
             int id = item.getItemId();
             if (id == R.id.navigation_home) {
                 if (mProduct == null) {
-                    mTextView.setVisibility(View.VISIBLE);
-                    return false;
+                    replaceFragment(HomeFragment.newInstance("Product Name", "Description"));
                 } else {
-                    mTextView.setVisibility(View.INVISIBLE);
+                    replaceFragment(HomeFragment.newInstance(mProduct.getName(), mProduct.getDescription()));
                 }
-                replaceFragment(HomeFragment.newInstance(mProduct.getName(), mProduct.getDescription()));
+
                 return true;
             } else if (id == R.id.navigation_comments) {
                 replaceFragment(new CommentFragment());
@@ -82,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
         // In pre execute progress bar
         // in post execute, replace fragment and pass product object that is global declared.
         mProgressBar = findViewById(R.id.progressBar);
-        mTextView = findViewById(R.id.tv_noinfo);
         new DownloadProduct().execute(ADIDAS_EXAMPLE_URL);
 
 
@@ -154,12 +137,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Product product) {
             mProgressBar.setVisibility(View.INVISIBLE);
-            mProduct = null;
+            mProduct = product;
             if (product == null) {
-                mTextView.setVisibility(View.VISIBLE);
+                replaceFragment(HomeFragment.newInstance("Product Name", "Description"));
             } else {
-                mTextView.setVisibility(View.INVISIBLE);
-                mProduct = product;
                 replaceFragment(HomeFragment.newInstance(product.getName(), product.getDescription()));
             }
 

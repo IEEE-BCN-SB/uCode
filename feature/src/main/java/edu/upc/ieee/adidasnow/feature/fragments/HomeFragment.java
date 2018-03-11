@@ -83,8 +83,8 @@ public class HomeFragment extends Fragment {
 
         textViewHomeName.setText(mName);
         textViewHomeDescription.setText(mName);
-        /*for(int i = 0; i < fragmentHomeImages.length ; ++i)
-            fragmentHomeImages[i].setImageURI(Uri.parse("http://i0.kym-cdn.com/entries/icons/original/000/013/564/doge.jpg"));*/
+        for(int i = 0; i < fragmentHomeImages.length ; ++i)
+            fragmentHomeImages[i].setImageURI(Uri.parse("http://i0.kym-cdn.com/entries/icons/original/000/013/564/doge.jpg"));
 
         return view;
     }

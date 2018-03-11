@@ -35,7 +35,7 @@
                     android:background="@color/lightGrey"
                     ></View>
                 <TextView
-                    android:id="@+id/product_row_comment"
+                    android:id="@+id/comment_row_product"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Mein fuhrer ist spielen."

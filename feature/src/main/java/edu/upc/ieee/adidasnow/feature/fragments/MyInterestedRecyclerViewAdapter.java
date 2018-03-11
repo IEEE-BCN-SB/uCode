@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import edu.upc.ieee.adidasnow.feature.R;
@@ -37,8 +38,9 @@ public class MyInterestedRecyclerViewAdapter extends RecyclerView.Adapter<MyInte
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mNameView.setText(mValues.get(position).id);
+        holder.mDescriptionView.setText(mValues.get(position).content);
+        holder.mPriceView.setText(String.valueOf(position) + "€");
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,20 +61,20 @@ public class MyInterestedRecyclerViewAdapter extends RecyclerView.Adapter<MyInte
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         final View mView;
-        final TextView mIdView;
-        final TextView mContentView;
+        final ImageView mImgView;
+        final TextView mNameView;
+        final TextView mDescriptionView;
+        final TextView mPriceView;
         DummyItem mItem;
 
         ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = view.findViewById(R.id.id);
-            mContentView = view.findViewById(R.id.content);
+            mImgView = view.findViewById(R.id.product_row_image);
+            mNameView = view.findViewById(R.id.product_row_name);
+            mDescriptionView = view.findViewById(R.id.product_row_description);
+            mPriceView = view.findViewById(R.id.product_row_price);
         }
 
-        @Override
-        public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
-        }
     }
 }
