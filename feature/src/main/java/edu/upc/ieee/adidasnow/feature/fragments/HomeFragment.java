@@ -1,9 +1,13 @@
 package edu.upc.ieee.adidasnow.feature.fragments;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +18,15 @@ import com.google.gson.Gson;
 
 import org.w3c.dom.Text;
 
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
+
 import edu.upc.ieee.adidasnow.feature.R;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -67,6 +79,25 @@ public class HomeFragment extends Fragment {
         }
     }
 
+    private Bitmap getImageBitmap(String url) {
+        Bitmap bm = null;
+        try {
+            URL aURL = new URL(url);
+            URLConnection conn = aURL.openConnection();
+            conn.connect();
+            InputStream is = conn.getInputStream();
+            BufferedInputStream bis = new BufferedInputStream(is);
+            bm = BitmapFactory.decodeStream(bis);
+            bis.close();
+            is.close();
+        } catch (IOException e) {
+            Log.e(TAG, "Error getting bitmap", e);
+        }
+        return bm;
+    }
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -76,16 +107,14 @@ public class HomeFragment extends Fragment {
         // TBD Only Test purpose, to be deleted
         TextView textViewHomeName = view.findViewById(R.id.fragment_home_name);
         TextView textViewHomeDescription = view.findViewById(R.id.fragment_home_description);
-        ImageView[] fragmentHomeImages = {
-                view.findViewById(R.id.fragment_home_image_1),
-                view.findViewById(R.id.fragment_home_image_2),
-                view.findViewById(R.id.fragment_home_image_3) };
+
+        new DownloadImageTask((ImageView) view.findViewById(R.id.fragment_home_image_1)).execute("http://i0.kym-cdn.com/entries/icons/original/000/013/564/doge.jpg");
+        new DownloadImageTask((ImageView) view.findViewById(R.id.fragment_home_image_2)).execute("http://i0.kym-cdn.com/entries/icons/original/000/013/564/doge.jpg");
+        new DownloadImageTask((ImageView) view.findViewById(R.id.fragment_home_image_3)).execute("http://i0.kym-cdn.com/entries/icons/original/000/013/564/doge.jpg");
 
         textViewHomeName.setText(mName);
         textViewHomeDescription.setText(mName);
-        for(int i = 0; i < fragmentHomeImages.length ; ++i)
-            fragmentHomeImages[i].setImageURI(Uri.parse("http://i0.kym-cdn.com/entries/icons/original/000/013/564/doge.jpg"));
-
+        DownloadImageTask[] downloadImageTasks = new DownloadImageTask[3] ;
         return view;
     }
 
@@ -125,5 +154,29 @@ public class HomeFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+}
+class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+    ImageView bmImage;
+
+    public DownloadImageTask(ImageView bmImage) {
+        this.bmImage = bmImage;
+    }
+
+    protected Bitmap doInBackground(String... urls) {
+        String urldisplay = urls[0];
+        Bitmap mIcon11 = null;
+        try {
+            InputStream in = new java.net.URL(urldisplay).openStream();
+            mIcon11 = BitmapFactory.decodeStream(in);
+        } catch (Exception e) {
+            Log.e("Error", e.getMessage());
+            e.printStackTrace();
+        }
+        return mIcon11;
+    }
+
+    protected void onPostExecute(Bitmap result) {
+        bmImage.setImageBitmap(result);
     }
 }

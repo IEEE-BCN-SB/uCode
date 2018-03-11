@@ -2,12 +2,13 @@
 <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/list"
+    android:id="@+id/comment_list"
     android:name="edu.upc.ieee.adidasnow.feature.fragments.ComentFragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     app:layoutManager="LinearLayoutManager"
     tools:context="edu.upc.ieee.adidasnow.feature.fragments.CommentFragment"
-    tools:listitem="@layout/comment_list_row" >
+    tools:listitem="@layout/comment_list_row"
+    android:background="@color/primaryColor">
 
 </android.support.v7.widget.RecyclerView>
