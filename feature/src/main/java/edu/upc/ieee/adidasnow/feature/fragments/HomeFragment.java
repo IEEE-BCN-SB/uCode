@@ -108,9 +108,9 @@ public class HomeFragment extends Fragment {
         TextView textViewHomeName = view.findViewById(R.id.fragment_home_name);
         TextView textViewHomeDescription = view.findViewById(R.id.fragment_home_description);
 
-        new DownloadImageTask((ImageView) view.findViewById(R.id.fragment_home_image_1)).execute("http://i0.kym-cdn.com/entries/icons/original/000/013/564/doge.jpg");
-        new DownloadImageTask((ImageView) view.findViewById(R.id.fragment_home_image_2)).execute("http://i0.kym-cdn.com/entries/icons/original/000/013/564/doge.jpg");
-        new DownloadImageTask((ImageView) view.findViewById(R.id.fragment_home_image_3)).execute("http://i0.kym-cdn.com/entries/icons/original/000/013/564/doge.jpg");
+        new DownloadImageTask((ImageView) view.findViewById(R.id.fragment_home_image_1)).execute("http://www.adidas.es/dis/dw/image/v2/aagl_prd/on/demandware.static/-/Sites-adidas-products/default/dw00b5e7f5/zoom/CQ2030_01_standard.jpg");
+        new DownloadImageTask((ImageView) view.findViewById(R.id.fragment_home_image_2)).execute("http://www.adidas.es/dis/dw/image/v2/aagl_prd/on/demandware.static/-/Sites-adidas-products/default/dw737621ff/zoom/CQ2028_01_standard.jpg");
+        new DownloadImageTask((ImageView) view.findViewById(R.id.fragment_home_image_3)).execute("http://www.adidas.es/dis/dw/image/v2/aagl_prd/on/demandware.static/-/Sites-adidas-products/default/dw7679b2ae/zoom/AC8326_01_standard.jpg");
 
         textViewHomeName.setText(mName);
         textViewHomeDescription.setText(mName);

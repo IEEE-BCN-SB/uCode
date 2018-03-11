@@ -45,7 +45,7 @@
                         android:layout_marginHorizontal="10dp"
                         android:cropToPadding="false"
                         android:scaleType="centerCrop"
-                        android:src="?android:attr/textSelectHandleLeft" />
+                        android:src="@drawable/adidas" />
 
                     <ImageView
                         android:id="@+id/fragment_home_image_2"
@@ -54,7 +54,7 @@
                         android:layout_marginHorizontal="10dp"
                         android:cropToPadding="false"
                         android:scaleType="centerCrop"
-                        android:src="?android:attr/textSelectHandleLeft" />
+                        android:src="@drawable/adidas" />
 
                     <ImageView
                         android:id="@+id/fragment_home_image_3"
@@ -63,7 +63,7 @@
                         android:layout_marginHorizontal="10dp"
                         android:cropToPadding="false"
                         android:scaleType="centerCrop"
-                        android:src="?android:attr/textSelectHandleLeft" />
+                        android:src="@drawable/adidas" />
 
                     <View
                         android:layout_width="40sp"

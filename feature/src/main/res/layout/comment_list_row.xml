@@ -11,7 +11,7 @@
     <android.support.v7.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_margin="10dp"
         app:cardElevation="10sp">
 
         <LinearLayout
@@ -30,7 +30,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="Heil"
-                    android:textSize="17dp" />
+                    android:textSize="17dp"
+                    android:layout_marginTop="10dp"/>
 
                 <View
                     android:layout_width="match_parent"
@@ -45,7 +46,8 @@
                     android:layout_marginLeft="10dp"
                     android:paddingVertical="5dp"
                     android:text="Mein fuhrer ist spielen."
-                    android:textSize="10dp" />
+                    android:textSize="10dp"
+                    android:layout_marginBottom="10dp"/>
 
             </LinearLayout>
 
