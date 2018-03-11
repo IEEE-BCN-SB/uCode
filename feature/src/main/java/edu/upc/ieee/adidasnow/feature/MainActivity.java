@@ -54,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
 
                 return true;
             } else if (id == R.id.navigation_interested) {
-                replaceFragment(new InterestedFragment());
+                ;
+                replaceFragment(InterestedFragment.newInstance(mProduct.getRecomendations()));
                 return true;
             }
             return false;

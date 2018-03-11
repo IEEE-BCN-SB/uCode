@@ -8,7 +8,7 @@ package edu.upc.ieee.adidasnow.feature.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Recomendation {
+public class Recommendation {
 
     @SerializedName("img")
     @Expose

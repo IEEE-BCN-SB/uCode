@@ -10,6 +10,7 @@ import android.widget.TextView;
 import edu.upc.ieee.adidasnow.feature.R;
 import edu.upc.ieee.adidasnow.feature.fragments.InterestedFragment.OnListFragmentInteractionListener;
 import edu.upc.ieee.adidasnow.feature.fragments.dummy.DummyContent.DummyItem;
+import edu.upc.ieee.adidasnow.feature.models.Recommendation;
 
 import java.util.List;
 
@@ -20,10 +21,10 @@ import java.util.List;
  */
 public class MyInterestedRecyclerViewAdapter extends RecyclerView.Adapter<MyInterestedRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<Recommendation> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    MyInterestedRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    MyInterestedRecyclerViewAdapter(List<Recommendation> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -38,20 +39,10 @@ public class MyInterestedRecyclerViewAdapter extends RecyclerView.Adapter<MyInte
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mNameView.setText(mValues.get(position).id);
-        holder.mDescriptionView.setText(mValues.get(position).content);
+        holder.mNameView.setText(holder.mItem.getLink());
+        holder.mDescriptionView.setText(holder.mItem.getLink());
         holder.mPriceView.setText(String.valueOf(position) + "€");
 
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
-                }
-            }
-        });
     }
 
     @Override
@@ -65,7 +56,7 @@ public class MyInterestedRecyclerViewAdapter extends RecyclerView.Adapter<MyInte
         final TextView mNameView;
         final TextView mDescriptionView;
         final TextView mPriceView;
-        DummyItem mItem;
+        Recommendation mItem;
 
         ViewHolder(View view) {
             super(view);

@@ -10,9 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.io.Serializable;
+import java.util.List;
+
 import edu.upc.ieee.adidasnow.feature.R;
 import edu.upc.ieee.adidasnow.feature.fragments.dummy.DummyContent;
 import edu.upc.ieee.adidasnow.feature.fragments.dummy.DummyContent.DummyItem;
+import edu.upc.ieee.adidasnow.feature.models.Recommendation;
 
 /**
  * A fragment representing a list of Items.
@@ -23,10 +27,10 @@ import edu.upc.ieee.adidasnow.feature.fragments.dummy.DummyContent.DummyItem;
 public class InterestedFragment extends Fragment {
 
     // TODO: Customize parameter argument names
-    private static final String ARG_COLUMN_COUNT = "column-count";
+    private static final String ARG_RECOMMENDATIONS = "recommendations";
     // TODO: Customize parameters
-    private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
+    List<Recommendation> mRecommendation;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -37,10 +41,10 @@ public class InterestedFragment extends Fragment {
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static InterestedFragment newInstance(int columnCount) {
+    public static InterestedFragment newInstance(List<Recommendation> recommendation) {
         InterestedFragment fragment = new InterestedFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_COLUMN_COUNT, columnCount);
+        args.putSerializable(ARG_RECOMMENDATIONS,(Serializable) recommendation);
         fragment.setArguments(args);
         return fragment;
     }
@@ -50,7 +54,7 @@ public class InterestedFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         if (getArguments() != null) {
-            mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
+            mRecommendation = (List<Recommendation>) getArguments().getSerializable("bla");
         }
     }
 
@@ -63,12 +67,8 @@ public class InterestedFragment extends Fragment {
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
             RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-            recyclerView.setAdapter(new MyInterestedRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setLayoutManager(new LinearLayoutManager(context));
+            recyclerView.setAdapter(new MyInterestedRecyclerViewAdapter(mRecommendation, mListener));
         }
         return view;
     }
