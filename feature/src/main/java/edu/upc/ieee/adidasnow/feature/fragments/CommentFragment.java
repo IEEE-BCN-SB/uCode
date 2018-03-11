@@ -29,6 +29,7 @@ import edu.upc.ieee.adidasnow.feature.models.Product;
 public class CommentFragment extends Fragment {
 
     // TODO: Customize parameter argument names
+    private static final String ARG_COMMENTS = "comments";
     // TODO: Customize parameters
     private OnListFragmentInteractionListener mListener;
     List<Comment> mComments;
@@ -45,7 +46,7 @@ public class CommentFragment extends Fragment {
     public static CommentFragment newInstance(List<Comment> comments) {
         CommentFragment fragment = new CommentFragment();
         Bundle args = new Bundle();
-        args.putSerializable("bla",(Serializable) comments);
+        args.putSerializable(ARG_COMMENTS,(Serializable) comments);
         fragment.setArguments(args);
         return fragment;
     }

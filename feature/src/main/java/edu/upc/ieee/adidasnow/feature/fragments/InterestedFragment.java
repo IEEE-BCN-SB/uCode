@@ -27,6 +27,7 @@ import edu.upc.ieee.adidasnow.feature.models.Recommendation;
 public class InterestedFragment extends Fragment {
 
     // TODO: Customize parameter argument names
+    private static final String ARG_RECOMMENDATIONS = "recommendations";
     // TODO: Customize parameters
     private OnListFragmentInteractionListener mListener;
     List<Recommendation> mRecommendation;
@@ -43,7 +44,7 @@ public class InterestedFragment extends Fragment {
     public static InterestedFragment newInstance(List<Recommendation> recommendation) {
         InterestedFragment fragment = new InterestedFragment();
         Bundle args = new Bundle();
-        args.putSerializable("bla",(Serializable) recommendation);
+        args.putSerializable(ARG_RECOMMENDATIONS,(Serializable) recommendation);
         fragment.setArguments(args);
         return fragment;
     }
