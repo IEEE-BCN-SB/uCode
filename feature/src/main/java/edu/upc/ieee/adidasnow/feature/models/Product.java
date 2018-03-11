@@ -6,55 +6,34 @@ import com.google.gson.annotations.SerializedName;
 
 public class Product {
 
-@SerializedName("price")
-@Expose
-private Double price;
-@SerializedName("name")
-@Expose
-private String name;
-@SerializedName("category")
-@Expose
-private String category;
-@SerializedName("description")
-@Expose
-private String description;
-@SerializedName("comments")
-@Expose
-private List<Comment> comments = null;
-@SerializedName("images")
-@Expose
-private List<String> images = null;
+    @SerializedName("images")
+    @Expose
+    private List<String> images = null;
+    @SerializedName("comments")
+    @Expose
+    private List<Comment> comments = null;
+    @SerializedName("category")
+    @Expose
+    private String category;
+    @SerializedName("recomendations")
+    @Expose
+    private List<Recomendation> recomendations = null;
+    @SerializedName("price")
+    @Expose
+    private Double price;
+    @SerializedName("description")
+    @Expose
+    private String description;
+    @SerializedName("name")
+    @Expose
+    private String name;
 
-public Double getPrice() {
-return price;
-}
-
-public void setPrice(Double price) {
-this.price = price;
-}
-
-public String getName() {
-return name;
-}
-
-public void setName(String name) {
-this.name = name;
-}
-
-    public String getCategory() {
-        return category;
+    public List<String> getImages() {
+        return images;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setImages(List<String> images) {
+        this.images = images;
     }
 
     public List<Comment> getComments() {
@@ -65,4 +44,44 @@ this.name = name;
         this.comments = comments;
     }
 
-}
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public List<Recomendation> getRecomendations() {
+        return recomendations;
+    }
+
+    public void setRecomendations(List<Recomendation> recomendations) {
+        this.recomendations = recomendations;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+}}
