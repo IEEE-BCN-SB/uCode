@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="92992f0c-3b91-4e36-a98b-0b2abd607063" name="aws" url="http://ec2-18-197-139-220.eu-central-1.compute.amazonaws.com">
+        <fileTransfer host="ec2-18-197-139-220.eu-central-1.compute.amazonaws.com" port="22" privateKey="$PROJECT_DIR$/ucode.pem" rootFolder="/home/ubuntu" accessType="SFTP" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
