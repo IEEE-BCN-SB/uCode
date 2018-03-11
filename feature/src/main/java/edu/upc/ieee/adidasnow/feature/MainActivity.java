@@ -19,6 +19,8 @@ import android.widget.ProgressBar;
 import edu.upc.ieee.adidasnow.feature.fragments.HomeFragment;
 import edu.upc.ieee.adidasnow.feature.fragments.CommentFragment;
 import edu.upc.ieee.adidasnow.feature.fragments.InterestedFragment;
+import edu.upc.ieee.adidasnow.feature.fragments.dummy.DummyContent;
+import edu.upc.ieee.adidasnow.feature.fragments.dummy.DummyProduct;
 import edu.upc.ieee.adidasnow.feature.models.Product;
 import edu.upc.ieee.adidasnow.feature.remote.GenericController;
 
@@ -44,7 +46,12 @@ public class MainActivity extends AppCompatActivity {
 
                 return true;
             } else if (id == R.id.navigation_comments) {
-                replaceFragment(new CommentFragment());
+                if (mProduct == null) {
+                    replaceFragment(CommentFragment.newInstance(DummyProduct.COMMENTS));
+                } else {
+                    replaceFragment(CommentFragment.newInstance(mProduct.getComments()));
+                }
+
                 return true;
             } else if (id == R.id.navigation_interested) {
                 replaceFragment(new InterestedFragment());
