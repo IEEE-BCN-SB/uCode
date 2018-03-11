@@ -17,7 +17,7 @@ public class Product {
     private String category;
     @SerializedName("recomendations")
     @Expose
-    private List<Recomendation> recomendations = null;
+    private List<Recommendation> recomendations = null;
     @SerializedName("price")
     @Expose
     private Double price;
@@ -52,11 +52,11 @@ public class Product {
         this.category = category;
     }
 
-    public List<Recomendation> getRecomendations() {
+    public List<Recommendation> getRecomendations() {
         return recomendations;
     }
 
-    public void setRecomendations(List<Recomendation> recomendations) {
+    public void setRecomendations(List<Recommendation> recomendations) {
         this.recomendations = recomendations;
     }
 

@@ -71,17 +71,6 @@ public class CommentFragment extends Fragment {
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
             recyclerView.setAdapter(new MyCommentRecyclerViewAdapter(mComments, mListener));
 
-
-            /*
-            List<Product> l = new Vector<Product>();
-            Product p = new Product();
-            p.setName("Heil");
-            p.setCategory("Roba");
-            p.setDescription("Mein fuhrer");
-            p.setPrice(20.0);
-            l.add(p);
-            recyclerView.setAdapter(new AssignProduct(l));
-            */
         }
         return view;
     }
