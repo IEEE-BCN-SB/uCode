@@ -12,6 +12,7 @@ import org.w3c.dom.Text;
 import edu.upc.ieee.adidasnow.feature.R;
 import edu.upc.ieee.adidasnow.feature.fragments.CommentFragment.OnListFragmentInteractionListener;
 import edu.upc.ieee.adidasnow.feature.fragments.dummy.DummyContent.DummyItem;
+import edu.upc.ieee.adidasnow.feature.models.Comment;
 import edu.upc.ieee.adidasnow.feature.models.Product;
 
 import java.util.List;
@@ -23,12 +24,12 @@ import java.util.List;
  */
 public class MyCommentRecyclerViewAdapter extends RecyclerView.Adapter<MyCommentRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<Comment> mValues;
     private final OnListFragmentInteractionListener mListener;
 
     // private List<Product> productList;
 
-    MyCommentRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    MyCommentRecyclerViewAdapter(List<Comment> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -43,20 +44,9 @@ public class MyCommentRecyclerViewAdapter extends RecyclerView.Adapter<MyComment
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mTitleView.setText(mValues.get(position).id);
-        holder.mDescriptionView.setText(mValues.get(position).content);
-        holder.mNameView.setText(mValues.get(position).id);
-
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
-                }
-            }
-        });
+        holder.mTitleView.setText(holder.mItem.getTitle());
+        holder.mDescriptionView.setText(holder.mItem.getDescription());
+        holder.mNameView.setText(holder.mItem.getUser());
     }
 
     @Override
@@ -70,7 +60,7 @@ public class MyCommentRecyclerViewAdapter extends RecyclerView.Adapter<MyComment
         final TextView mDescriptionView;
         final TextView mNameView;
 
-        DummyItem mItem;
+        Comment mItem;
 
         ViewHolder(View view) {
             super(view);
